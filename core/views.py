@@ -17,11 +17,14 @@ def comments(request):
 
 def check_spam(request):
     comments = Comment.objects.all()
-    predictions = predict_spam(comments.values_list('text', flat=True))
-    context = {
-        'comments': zip(comments, predictions)
-    }
-    return render(request, 'partials/comments-spam.html', context)
+    if comments.exists():
+        predictions = predict_spam(comments.values_list('text', flat=True))
+        context = {
+            'comments': zip(comments, predictions)
+        }
+        return render(request, 'partials/comments-spam.html', context)
+    else:
+        return HttpResponse(status=204)
 
 
 def delete_comment(request, pk):
