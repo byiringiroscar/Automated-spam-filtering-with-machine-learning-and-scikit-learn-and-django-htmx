@@ -10,5 +10,5 @@ def comments(request):
     context = {
         'comments': comments
     }
-    return render(request, 'comments.html', context=)
+    return render(request, 'comments.html', context)
 
