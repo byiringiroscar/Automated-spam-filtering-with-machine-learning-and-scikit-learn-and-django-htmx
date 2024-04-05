@@ -5,6 +5,17 @@
 
 {% block content %}
 
-{{ comments }}
+<h1 class='font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600'>Comments</h1>
+
+
+<div id='comments'>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+
 
 {% endblock %}
