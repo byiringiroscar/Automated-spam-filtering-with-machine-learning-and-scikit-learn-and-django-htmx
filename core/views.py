@@ -12,3 +12,11 @@ def comments(request):
     }
     return render(request, 'comments.html', context)
 
+
+def check_spam(request):
+    comments = Comment.objects.all()
+    context = {
+        'comments': comments
+    }
+    return render(request, 'partials/comments-spam.html', context)
+
